@@ -1,2 +1,2 @@
 # React-Pokedex
-Pokedex made using create-react-app.
+React Pokedex made using PokeAPI.
