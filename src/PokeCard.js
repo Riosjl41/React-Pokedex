@@ -1,13 +1,16 @@
 import React from 'react';
+import PokeList from './PokeList';
 
 const PokeCard = ({pokemon}) => {
     return ( 
-        <div className='bg-white dib br3 pa3 ma2 grow'>
-            <div>
-                <h2>Jane Doe</h2>
-                {pokemon}
-            </div>
-        </div> 
+        pokemon.map(pokemon=>{
+           return (
+           <div>
+            <p>{pokemon.name}</p>
+            <p>{pokemon.url}</p>
+           </div>
+           );
+        })
     );
 }
  

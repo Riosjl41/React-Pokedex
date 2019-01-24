@@ -17,23 +17,19 @@ class App extends Component {
         this.setState({
           pokemon: response.results
         })
-        console.log(this.state.pokemon);
       })
     }
 
   render() {
     return (
       <div>
-      {this.state.pokemon.map(pokemon => {
-          return(
-            <p>{pokemon.name}</p>
-          )
-      })}
+        <PokeList pokemon={this.state.pokemon} />
       </div>
     );
   }
 }
 
 export default App;
+
 
 
