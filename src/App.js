@@ -33,7 +33,6 @@ class App extends Component {
     return (
       <div>
         <PokeList pokemon={this.state.pokemon} />
-        {this.state.urls}
       </div>
     );
   }
