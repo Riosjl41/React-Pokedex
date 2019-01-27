@@ -6,7 +6,9 @@ class App extends Component {
   constructor(){
     super()
     this.state={
-      pokemon:[]
+      pokemon:[],
+      urls:[],
+      abilities:[]
     }
   }
 
@@ -15,15 +17,23 @@ class App extends Component {
       .then(response => response.json())
       .then(response => {
         this.setState({
-          pokemon: response.results
+          pokemon: response.results,
+          urls:[...response.results.map(pokemon=>pokemon.url)]
         })
       })
+      .then(this.state.urls.map(url=>
+        fetch(url)
+          .then(response => response.json())
+          .then(data => this.setState({abilities:data.abilities[0].ability.name}))
+        )
+        )
     }
 
   render() {
     return (
       <div>
         <PokeList pokemon={this.state.pokemon} />
+        {this.state.urls}
       </div>
     );
   }

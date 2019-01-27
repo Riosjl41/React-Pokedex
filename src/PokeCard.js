@@ -1,5 +1,4 @@
 import React from 'react';
-import PokeList from './PokeList';
 
 const PokeCard = ({pokemon}) => {
     return ( 
