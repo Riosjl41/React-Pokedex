@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import styles from './PokeCard.module.css';
 
 const Type_Color = {
   normal: '#BDBCB1',
@@ -33,26 +34,34 @@ class PokeList extends Component{
 
         async componentDidMount() {
           const {name, url} = this.props;
+
           const pokeIndex = url.split('/')[url.split('/').length-2];
           const pokeUrl=`https://pokeapi.co/api/v2/pokemon/${pokeIndex}/`;
-
           const pokeData = await axios.get(pokeUrl);
 
           const type1 = pokeData.data.types[0].type.name;
-          const type2 = pokeData.data.types[1].type.name;
-
           const imageUrl = pokeData.data.sprites.front_default;
-          this.setState({type1:type1,type2:type2});
 
-          this.setState({name:name , imgUrl:imageUrl, pokeIndex:pokeIndex});
+          this.setState({
+            name:name , 
+            imgUrl:imageUrl, 
+            pokeIndex:pokeIndex, 
+            type1:type1});
+
+            let type2;
+
+            if (pokeData.data.types[1]){
+              type2= pokeData.data.types[1].type.name;
+              this.setState({type2:type2});
+            }
         }
 
       render() {
         return (
-          <div className='bg-light-green dib br3 pa3 ma2 grow shadow-5'>
+          <div className='bg-light-green dib br3 pa3 ma2 grow shadow-5' style={{textAlign:'center'}}>
             <img alt='pokeimg' src={this.state.imgUrl} />
-            <p>{this.state.name}</p>
-            <p className='f6 dim br-pill ph3 pv2 mb2 dib white' style={{backgroundColor:`${Type_Color[this.state.type1]}`}}>{this.state.type1}</p>
+            <h3 className={styles.name}>{this.state.name}</h3>
+            <p className='f6 dim br-pill ph3 pv2 mb2 dib white ma4' style={{backgroundColor:`${Type_Color[this.state.type1]}`, }}>{this.state.type1}</p>
             <p className='f6 dim br-pill ph3 pv2 mb2 dib white' style={{backgroundColor:`${Type_Color[this.state.type2]}`}}>{this.state.type2}</p>
 
           </div>

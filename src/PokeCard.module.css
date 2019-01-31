@@ -1,0 +1,9 @@
+.name{
+    text-transform: capitalize;
+    text-align:center;
+}
+
+.type{
+    display:flex;
+    justify-content: center;
+}
