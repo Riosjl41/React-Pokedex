@@ -1,9 +1,7 @@
 .name{
     text-transform: capitalize;
-    text-align:center;
 }
 
 .type{
-    display:flex;
-    justify-content: center;
+    margin-top:15px;
 }

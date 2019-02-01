@@ -59,11 +59,13 @@ class PokeList extends Component{
       render() {
         return (
           <div className='bg-light-green dib br3 pa3 ma2 grow shadow-5' style={{textAlign:'center'}}>
-            <img alt='pokeimg' src={this.state.imgUrl} />
+            <img alt='pokeimg' src={this.state.imgUrl} style={{width:'170px'}} />
+            <h3>#{this.state.pokeIndex}</h3>
             <h3 className={styles.name}>{this.state.name}</h3>
-            <p className='f6 dim br-pill ph3 pv2 mb2 dib white ma4' style={{backgroundColor:`${Type_Color[this.state.type1]}`, }}>{this.state.type1}</p>
-            <p className='f6 dim br-pill ph3 pv2 mb2 dib white' style={{backgroundColor:`${Type_Color[this.state.type2]}`}}>{this.state.type2}</p>
-
+            <div className={styles.type}>
+              <p className='f6 dim br-pill ph3 pv2 mb2 dib white' style={{backgroundColor:`${Type_Color[this.state.type1]}`}}>{this.state.type1}</p>
+              <p className='f6 dim br-pill ph3 pv2 mb2 dib white' style={{backgroundColor:`${Type_Color[this.state.type2]}`}}>{this.state.type2}</p>
+            </div>
           </div>
         );
       }

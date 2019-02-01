@@ -15,7 +15,7 @@ class PokeList extends Component{
 
       render() {
         return (
-          <React.Fragment>
+          <div>
           {this.state.pokemon ? (
             <div>
               {this.state.pokemon.map(pokemon=> (
@@ -29,7 +29,7 @@ class PokeList extends Component{
           ):(
             <h1>Loading Pokemon</h1>
             )}
-          </React.Fragment>
+          </div>
         );
       }
     }
