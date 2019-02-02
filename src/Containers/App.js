@@ -2,21 +2,24 @@ import React, { Component } from 'react';
 import './App.css';
 import PokeList from '../Components/PokeList';
 import SearchBox from '../Components/SearchBox';
+import axios from 'axios';
+
 
 class App extends Component {
   constructor(){
     super()
     this.state={
-      pokemon:[],
-      urls:[],
-      abilities:[],
+      url:'https://pokeapi.co/api/v2/pokemon/?limit=151',
+      pokemon: [],
+      names:[],
       searchfield: ''
     }
   }
 
-  componentDidMount(){
-   
-  }
+  async componentDidMount(){
+    const res = await axios.get(this.state.url);
+    this.setState({pokemon:res.data['results']})
+}
 
   onSearchChange = (event) => {
       this.setState({searchfield: event.target.value})
@@ -24,14 +27,16 @@ class App extends Component {
 
   render() {
     const {pokemon, searchfield} = this.state;
-    const filterPoke = pokemon.filter(poke =>{
-      return poke.name.toLowerCase().includes(searchfield.toLowerCase());
-      }) 
+    const filteredPoke = pokemon.filter(robot =>{
+    return robot.name.toLowerCase().includes(searchfield.toLowerCase());
+    }) 
     return (
       <div className='tc'>
         <h1 className='f-headline lh-solid'>Pokedex</h1>
-        <SearchBox />
-        <PokeList pokemon={filterPoke} />
+        <SearchBox searchChange={this.onSearchChange}/>
+        <PokeList 
+        pokemon={filteredPoke}
+        url={this.state.url} />
       </div>
     );
   }
