@@ -27,13 +27,13 @@ class App extends Component {
 
   render() {
     const {pokemon, searchfield} = this.state;
-    const filteredPoke = pokemon.filter(robot =>{
-    return robot.name.toLowerCase().includes(searchfield.toLowerCase());
+    const filteredPoke = pokemon.filter(poke =>{
+    return poke.name.toLowerCase().includes(searchfield.toLowerCase());
     }) 
     return (
       <div className='tc'>
-        <h1 className='f-headline lh-solid'>Pokedex</h1>
-        <SearchBox searchChange={this.onSearchChange}/>
+        <h1 className='f-headline lh-solid pt3'>Pokedex</h1>
+        <SearchBox className='search' searchChange={this.onSearchChange}/>
         <PokeList 
         pokemon={filteredPoke}
         url={this.state.url} />

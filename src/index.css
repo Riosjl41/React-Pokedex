@@ -5,8 +5,8 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Avenir Next', sans-serif;
-  background: linear-gradient(to left, rgb(0, 128, 128), rgb(192, 192, 192));
+  font-family: 'Bangers', sans-serif;
+  background: linear-gradient(to left, #FF1111, rgb(192, 192, 192));
 }
 
 h1,
@@ -15,4 +15,8 @@ h3,
 h4,
 p {
   margin: 0;
+}
+
+h1{
+  text-shadow: 6px 6px 0px rgba(0,0,0,0.2);
 }
